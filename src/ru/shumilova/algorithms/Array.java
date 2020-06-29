@@ -62,7 +62,7 @@ public class Array {
 
     // homework
     // insert(index, value);
-    // delete(index);
+    // delete(index);+
     // deleteAll();
 
     @Override
@@ -150,7 +150,7 @@ public class Array {
         isSorted = true;
     }
 
-    private boolean delete(int val) {
+    public boolean deleteValue(int val) {
         int position = -1;
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] == val) {
@@ -160,18 +160,34 @@ public class Array {
         }
         boolean result;
         if (position != -1) {
-            int arr1[];
-            int arr2[];
-            arr1 = Arrays.copyOfRange(arr, 0, position);
-            arr2 = Arrays.copyOfRange(arr, position + 1, arr.length);
-            int newArr[] = new int[arr1.length + arr2.length];
-            System.arraycopy(arr1, 0, newArr, 0, arr1.length);
-            System.arraycopy(arr2, 0, newArr, arr1.length, arr2.length);
-            arr = newArr;
+            deleteFromPosition(position);
             result = true;
         } else {
             result = false;
         }
         return result;
+    }
+
+    public boolean deleteIndex(int index) {
+        boolean result;
+        if (index > -1 && index < arr.length) {
+            deleteFromPosition(index);
+            result = true;
+        } else {
+            result = false;
+        }
+        return result;
+    }
+
+    private void deleteFromPosition(int index) {
+        int arr1[];
+        int arr2[];
+        arr1 = Arrays.copyOfRange(arr, 0, index);
+        arr2 = Arrays.copyOfRange(arr, index + 1, arr.length);
+        int newArr[] = new int[arr1.length + arr2.length];
+        System.arraycopy(arr1, 0, newArr, 0, arr1.length);
+        System.arraycopy(arr2, 0, newArr, arr1.length, arr2.length);
+        arr = newArr;
+        size = arr.length;
     }
 }
