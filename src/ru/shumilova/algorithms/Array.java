@@ -1,5 +1,7 @@
 package ru.shumilova.algorithms;
 
+import java.util.Arrays;
+
 public class Array {
     private int arr[];
     private int size;
@@ -27,7 +29,7 @@ public class Array {
         return arr[index];
     }
 
-    public void set (int index, int value) {
+    public void set(int index, int value) {
         if (index >= size || index < 0)
             throw new ArrayIndexOutOfBoundsException(index);
         arr[index] = value;
@@ -60,7 +62,6 @@ public class Array {
 
     // homework
     // insert(index, value);
-    // delete(val);
     // delete(index);
     // deleteAll();
 
@@ -147,5 +148,30 @@ public class Array {
             arr[in] = temp;
         }
         isSorted = true;
+    }
+
+    private boolean delete(int val) {
+        int position = -1;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == val) {
+                position = i;
+                break;
+            }
+        }
+        boolean result;
+        if (position != -1) {
+            int arr1[];
+            int arr2[];
+            arr1 = Arrays.copyOfRange(arr, 0, position);
+            arr2 = Arrays.copyOfRange(arr, position + 1, arr.length);
+            int newArr[] = new int[arr1.length + arr2.length];
+            System.arraycopy(arr1, 0, newArr, 0, arr1.length);
+            System.arraycopy(arr2, 0, newArr, arr1.length, arr2.length);
+            arr = newArr;
+            result = true;
+        } else {
+            result = false;
+        }
+        return result;
     }
 }
