@@ -19,7 +19,7 @@ public class Array {
 
     public Array(int... args) {
         this();
-        this.size = args.length;
+        updateSize(args);
         this.arr = args;
     }
 
@@ -62,8 +62,7 @@ public class Array {
 
     // homework
     // insert(index, value);
-    // delete(index);+
-    // deleteAll();
+    // deleteAll();+
 
     @Override
     public String toString() {
@@ -188,6 +187,15 @@ public class Array {
         System.arraycopy(arr1, 0, newArr, 0, arr1.length);
         System.arraycopy(arr2, 0, newArr, arr1.length, arr2.length);
         arr = newArr;
+        updateSize(arr);
+    }
+
+    public void deleteAll(){
+        arr = new int[0];
+        updateSize(arr);
+    }
+
+    private void updateSize(int[] arr) {
         size = arr.length;
     }
 }

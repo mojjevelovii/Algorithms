@@ -16,5 +16,8 @@ public class Main {
         a0.deleteValue(-4);
         System.out.println(a0);
 
+        a0.deleteAll();
+        System.out.println(a0);
+
     }
 }
