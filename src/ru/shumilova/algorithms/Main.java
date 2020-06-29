@@ -19,5 +19,17 @@ public class Main {
         a0.deleteAll();
         System.out.println(a0);
 
+        a0.insert(2,100);
+        System.out.println(a0);
+
+        a0.insert(1,13);
+        System.out.println(a0);
+
+        a0.insert(0,9);
+        System.out.println(a0);
+
+        a0.insert(4,7);
+        System.out.println(a0);
+
     }
 }

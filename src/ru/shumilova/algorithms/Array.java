@@ -60,10 +60,6 @@ public class Array {
         return arr[--size];
     }
 
-    // homework
-    // insert(index, value);
-    // deleteAll();+
-
     @Override
     public String toString() {
         if (arr == null) return "null";
@@ -179,23 +175,58 @@ public class Array {
     }
 
     private void deleteFromPosition(int index) {
-        int arr1[];
-        int arr2[];
+        int[] arr1;
+        int[] arr2;
         arr1 = Arrays.copyOfRange(arr, 0, index);
         arr2 = Arrays.copyOfRange(arr, index + 1, arr.length);
-        int newArr[] = new int[arr1.length + arr2.length];
+        int[] newArr = new int[arr1.length + arr2.length];
         System.arraycopy(arr1, 0, newArr, 0, arr1.length);
         System.arraycopy(arr2, 0, newArr, arr1.length, arr2.length);
         arr = newArr;
         updateSize(arr);
     }
 
-    public void deleteAll(){
+    public void deleteAll() {
         arr = new int[0];
         updateSize(arr);
     }
 
     private void updateSize(int[] arr) {
         size = arr.length;
+    }
+
+    public boolean insert(int index, int value) {
+        if (index > -1) {
+            int[] newArr;
+            if (index > arr.length) {
+                 newArr = insertInOutArrayBounds(index, value);
+            } else {
+                newArr = insertInArrayBounds(index, value);
+            }
+            arr = newArr;
+            updateSize(arr);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private int[] insertInOutArrayBounds(int index, int value) {
+        int[] newArr2 = new int[index + 1];
+        System.arraycopy(arr, 0, newArr2, 0, arr.length);
+        newArr2[index] = value;
+        return newArr2;
+    }
+
+    private int[] insertInArrayBounds(int index, int value) {
+        int[] newArr = new int[arr.length + 1];
+        if (index == 0) {
+            System.arraycopy(arr, 0, newArr, 1, arr.length);
+        } else {
+            System.arraycopy(arr, 0, newArr, 0, index);
+            System.arraycopy(arr, index, newArr, index+1, arr.length - index);
+        }
+        newArr[index] = value;
+        return newArr;
     }
 }
