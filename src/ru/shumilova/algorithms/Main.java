@@ -7,7 +7,8 @@ public class Main {
         int[] arr2 = {1, 2, 3, 4};
 
         Array a0 = new Array(1, -2, -3, -4, 5);
-        //a0.sortBubble();
+        Array a1 = new Array(1, -9, -3, 9, 5, 10, 1, -9, -3, 9, 5, 10);
+        Array a2 = new Array(1, -9, -3, 9, 5, 10, 1, -9, -3, 9, 5, 10);
         System.out.println(a0);
 
         a0.deleteIndex(2);
@@ -30,6 +31,12 @@ public class Main {
 
         a0.insert(4,7);
         System.out.println(a0);
+
+        a1.betterSortBubble();
+        System.out.println(a1);
+
+        a2.sortBubble();
+        System.out.println(a2);
 
     }
 }

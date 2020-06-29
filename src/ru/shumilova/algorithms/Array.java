@@ -112,6 +112,7 @@ public class Array {
     }
 
     public void sortBubble() {
+        //O(n^2)
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size - 1; j++) {
                 if (arr[j] > arr[j + 1])
@@ -121,7 +122,19 @@ public class Array {
         isSorted = true;
     }
 
+    public void betterSortBubble() {
+        //O(n^2)
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size - 1 - i; j++) {
+                if (arr[j] > arr[j + 1])
+                    swap(j, j + 1);
+            }
+        }
+        isSorted = true;
+    }
+
     public void sortSelect() {
+        //O(n^2)
         for (int flag = 0; flag < size; flag++) {
             int cMin = flag;
             for (int rem = flag + 1; rem < size; rem++)
@@ -133,6 +146,7 @@ public class Array {
     }
 
     public void sortInsert() {
+        //O(n^2)
         for (int out = 0; out < size; out++) {
             int temp = arr[out];
             int in = out;
@@ -199,7 +213,7 @@ public class Array {
         if (index > -1) {
             int[] newArr;
             if (index > arr.length) {
-                 newArr = insertInOutArrayBounds(index, value);
+                newArr = insertInOutArrayBounds(index, value);
             } else {
                 newArr = insertInArrayBounds(index, value);
             }
@@ -224,7 +238,7 @@ public class Array {
             System.arraycopy(arr, 0, newArr, 1, arr.length);
         } else {
             System.arraycopy(arr, 0, newArr, 0, index);
-            System.arraycopy(arr, index, newArr, index+1, arr.length - index);
+            System.arraycopy(arr, index, newArr, index + 1, arr.length - index);
         }
         newArr[index] = value;
         return newArr;
