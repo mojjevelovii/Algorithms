@@ -3,14 +3,16 @@ package ru.shumilova.algorithms;
 import java.util.Stack;
 
 public class Main {
-    /*
-    1. Создать программу, которая переворачивает вводимые строки (читает справа налево).
-    2. Создать класс для реализации дека.
-    3. Реализовать класс с приоритетной очередью
-    */
-
-
     public static void main(String[] args) {
+        MyDeque myDeque = new MyDeque(7);
+        myDeque.insertLeft(4);
+        myDeque.insertLeft(9);
+        myDeque.insertRight(2);
+        System.out.println(myDeque.removeRight());
+        System.out.println(myDeque.removeRight());
+        System.out.println(myDeque.removeLeft());
+        System.out.println(myDeque.removeLeft());
+
         System.out.println(stringReverse("abc"));
     }
 
