@@ -4,6 +4,18 @@ import java.util.Stack;
 
 public class Main {
     public static void main(String[] args) {
+        MyPriorityQueue myPriorityQueue = new MyPriorityQueue(5);
+        myPriorityQueue.insert(10);
+        myPriorityQueue.insert(50);
+        myPriorityQueue.insert(80);
+        myPriorityQueue.insert(35);
+        myPriorityQueue.insert(20);
+        while (!myPriorityQueue.isEmpty()) {
+            int item = myPriorityQueue.remove();
+            System.out.print(item + " ");
+        }
+        System.out.println("");
+
         MyDeque myDeque = new MyDeque(7);
         myDeque.insertLeft(4);
         myDeque.insertLeft(9);
@@ -23,7 +35,7 @@ public class Main {
         }
 
         StringBuilder stringBuilder = new StringBuilder();
-        while (!chars.empty()){
+        while (!chars.empty()) {
             stringBuilder.append(chars.pop());
         }
         return stringBuilder.toString();

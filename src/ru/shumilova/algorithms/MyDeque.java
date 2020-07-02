@@ -8,8 +8,6 @@ public class MyDeque {
 
     public MyDeque(int capacity) {
         this.capacity = capacity;
-//        head = 0;
-//        tail = -1;
         deque = new int[capacity];
     }
 
@@ -45,6 +43,4 @@ public class MyDeque {
         }
         return remove;
     }
-
-
 }
