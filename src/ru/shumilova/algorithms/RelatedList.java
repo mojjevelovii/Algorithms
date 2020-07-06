@@ -6,6 +6,7 @@ public class RelatedList {
     private class Node {
         Cat c;
         Node next;
+        Node previous;
 
         public Node(Cat c) {
             this.c = c;
@@ -44,15 +45,21 @@ public class RelatedList {
 
     public void push(Cat c) {
         Node n = new Node(c);
+        if (head!= null){
+            head.previous = n;
+        }
         n.next = head;
         head = n;
         size++;
     }
 
     public Cat pop() {
-        if (isEmpty()) return null;
+        if (isEmpty()) {
+            return null;
+        }
         Cat temp = head.c;
         head = head.next;
+        head.previous = null;
         size--;
         return temp;
     }
@@ -74,7 +81,9 @@ public class RelatedList {
     }
 
     private Node find(Cat c) {
-        if (isEmpty()) return null;
+        if (isEmpty()) {
+            return null;
+        }
         Node current = head;
         while (!current.c.equals(c)) {
             if (current.next == null)
@@ -100,6 +109,7 @@ public class RelatedList {
             head = head.next;
         } else {
             previous.next = current.next;
+            previous.next.previous = previous;
         }
         return true;
     }
