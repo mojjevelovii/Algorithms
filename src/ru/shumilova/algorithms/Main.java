@@ -14,6 +14,20 @@ public class Main {
         System.out.println(rl);
         System.out.println(rl.delete(cat2));
         System.out.println(rl);
+
+        RelatedList.RelatedListIterator iterator = rl.getIterator();
+        System.out.println("___----ITERATOR----___");
+        iterator.next();
+        System.out.println(iterator.next());
+        System.out.println(iterator.previous());
+        iterator.deleteCurrent();
+        System.out.println(rl);
+        iterator.reset();
+        iterator.insertBefore(new Cat(12, "catBefore"));
+        System.out.println(rl);
+        iterator.insertAfter(new Cat(21, "catAfter"));
+        System.out.println(rl);
+
     }
 
     //reset(); итератор перемещает себя в начало списка
