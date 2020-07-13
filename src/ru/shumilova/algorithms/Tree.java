@@ -155,7 +155,7 @@ public class Tree {
         if (root.left != null) {
             deep = Integer.max(deep, getTreeDepth(root.left));
         }
-        if (root.right != null){
+        if (root.right != null) {
             deep = Integer.max(deep, getTreeDepth(root.right));
         }
         return deep + 1;
@@ -163,6 +163,34 @@ public class Tree {
 
     public TreeNode getRoot() {
         return root;
+    }
+
+    public boolean isBalanced() {
+        return checkBalanced(root);
+    }
+
+    private boolean checkBalanced(TreeNode node) {
+        int leftHeight;
+
+        int rightHeight;
+
+        if (node == null) {
+            return true;
+        }
+
+        leftHeight = height(node.left);
+        rightHeight = height(node.right);
+
+        return Math.abs(leftHeight - rightHeight) <= 1
+                && checkBalanced(node.left)
+                && checkBalanced(node.right);
+    }
+
+    private int height(TreeNode node) {
+        if (node == null) {
+            return 0;
+        }
+        return 1 + Math.max(height(node.left), height(node.right));
     }
 }
 

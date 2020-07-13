@@ -15,9 +15,18 @@ public class Main {
             trees.add(dTree);
         }
 
+        Tree balancedTree = new Tree();
+        balancedTree.insert(10);
+        balancedTree.insert(9);
+        balancedTree.insert(11);
+        balancedTree.insert(12);
+        balancedTree.insert(8);
+        trees.add(balancedTree);
+
         for (int i = 0; i < trees.size(); i++) {
             System.out.println("____PRINT TREES____" + i);
             trees.get(i).displayTree();
+            System.out.println("Is balanced: " + trees.get(i).isBalanced());
         }
     }
 
