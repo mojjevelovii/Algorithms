@@ -68,6 +68,7 @@ public class Tree {
     private void preOrderTraverse(TreeNode current) {
         if (current != null) {
             System.out.print(current.content + " ");
+            System.out.println(" ");
             preOrderTraverse(current.left);
             preOrderTraverse(current.right);
         }
@@ -149,6 +150,20 @@ public class Tree {
         return s;
     }
 
+    public int getTreeDepth(TreeNode root) {
+        int deep = 0;
+        if (root.left != null) {
+            deep = Integer.max(deep, getTreeDepth(root.left));
+        }
+        if (root.right != null){
+            deep = Integer.max(deep, getTreeDepth(root.right));
+        }
+        return deep + 1;
+    }
+
+    public TreeNode getRoot() {
+        return root;
+    }
 }
 
 
